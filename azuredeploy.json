@@ -49,7 +49,7 @@
         },
         "retentionInDays": 7
       }
-    }
+    },
     {
       "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
       "apiVersion": "2015-03-20",
@@ -58,10 +58,38 @@
         "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
       ],
       "properties": {
-        "category": "1C",
-        "displayName": "session.client",
-        "query": "MyRecordType_CL\n| where StringValue_s == \"sessions.client\" \n| project TimeGenerated, NumberValue_d, StringValue_s ",
-        "version": 2
+        "Category": "1C",
+        "DisplayName": "session.client",
+        "Query": "MyRecordType_CL\n| where StringValue_s == \"sessions.client\" \n| project TimeGenerated, NumberValue_d, StringValue_s ",
+        "Version": 2
+      }
+    },
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2015-03-20",
+      "name": "[concat(parameters('workspaceName'), '/', variables('subscriptionid'))]",
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
+      ],
+      "properties": {
+        "Category": "1C",
+        "DisplayName": "sessions.backgroundjob",
+        "Query": "MyRecordType_CL \r\n| where StringValue_s == \"sessions.backgroundjob\" \r\n| summarize BackgroundJob = sum(NumberValue_d) by TimeGenerated, bin(TimeGenerated,1h) | project TimeGenerated, BackgroundJob",
+        "Version": 2
+      }
+    },
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2015-03-20",
+      "name": "[concat(parameters('workspaceName'), '/', variables('subscriptionid'))]",
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
+      ],
+      "properties": {
+        "Category": "1C",
+        "DisplayName": "sessions.comconnection",
+        "Query": "MyRecordType_CL \r\n| where StringValue_s == \"sessions.comconnection\" \r\n| summarize Connections = sum(NumberValue_d) by TimeGenerated, bin(TimeGenerated,1h) \r\n| project TimeGenerated, Connections",
+        "Version": 2
       }
     }
   ]
