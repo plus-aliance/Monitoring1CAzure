@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Введите наименование службы мониторинга"
+      }
+    },
+    "location": {
+      "type": "string",
+      "allowedValues": [
+        "eastus",
+        "westus"
+      ],
+      "defaultValue": "westus",
+      "metadata": {
+        "description": "Выберите регион для службы мониторинга"
+      }
+    },
+    "sku": {
+      "type": "string",
+      "allowedValues": [
+        "Standalone",
+        "PerNode",
+        "PerGB2018",
+        "Free"
+      ],
+      "defaultValue": "Free",
+      "metadata": {
+        "description": "Выберите тарифный план для службы мониторинга"
+      }
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "microsoft.operationalinsights/workspaces",
+      "apiVersion": "2015-11-01-preview",
+      "name": "[parameters('workspaceName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "source": "Azure",
+        "sku": {
+          "name": "[parameters('sku')]"
+        },
+        "retentionInDays": 7
+      }
+    }
+  ]
+}
