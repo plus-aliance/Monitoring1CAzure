@@ -34,7 +34,6 @@
     }
   },
   "variables": {
-    "subscriptionid":  "subscription()"
   },
   "resources": [
     {
@@ -53,7 +52,7 @@
     {
       "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
       "apiVersion": "2015-03-20",
-      "name": "[concat(parameters('workspaceName'), '/', variables('subscriptionid'))]",
+      "name": "[concat(parameters('workspaceName'), '/session.client')]",
       "dependsOn": [
         "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
       ],
@@ -67,7 +66,7 @@
     {
       "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
       "apiVersion": "2015-03-20",
-      "name": "[concat(parameters('workspaceName'), '/', variables('subscriptionid'))]",
+      "name": "[concat(parameters('workspaceName'), '/sessions.backgroundjob')]",
       "dependsOn": [
         "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
       ],
@@ -81,7 +80,7 @@
     {
       "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
       "apiVersion": "2015-03-20",
-      "name": "[concat(parameters('workspaceName'), '/', variables('subscriptionid'))]",
+      "name": "[concat(parameters('workspaceName'), '/sessions.comconnection')]",
       "dependsOn": [
         "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
       ],
