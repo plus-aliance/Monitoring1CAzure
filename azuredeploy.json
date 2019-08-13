@@ -5,7 +5,7 @@
     "workspaceName": {
       "type": "string",
       "metadata": {
-        "description": "Введите наименование службы мониторинга"
+        "description": "Please enter name monitoring service"
       }
     },
     "location": {
@@ -16,7 +16,7 @@
       ],
       "defaultValue": "westus",
       "metadata": {
-        "description": "Выберите регион для службы мониторинга"
+        "description": "Please select region for monitoring service"
       }
     },
     "sku": {
@@ -29,7 +29,7 @@
       ],
       "defaultValue": "Free",
       "metadata": {
-        "description": "Выберите тарифный план для службы мониторинга"
+        "description": "Please select plan monitoring service"
       }
     }
   },
