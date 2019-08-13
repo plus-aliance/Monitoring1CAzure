@@ -11,10 +11,10 @@
     "location": {
       "type": "string",
       "allowedValues": [
-        "eastus",
-        "westus"
+        "easteurope",
+        "westeurope"
       ],
-      "defaultValue": "westus",
+      "defaultValue": "westeurope",
       "metadata": {
         "description": "Please select region for monitoring service"
       }
@@ -33,7 +33,8 @@
       }
     }
   },
-  "variables": {},
+  "variables": {
+    },
   "resources": [
     {
       "type": "microsoft.operationalinsights/workspaces",
