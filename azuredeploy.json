@@ -34,7 +34,8 @@
     }
   },
   "variables": {
-    },
+    "subscriptionid":  "subscription()"
+  },
   "resources": [
     {
       "type": "microsoft.operationalinsights/workspaces",
@@ -47,6 +48,20 @@
           "name": "[parameters('sku')]"
         },
         "retentionInDays": 7
+      }
+    }
+    {
+      "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
+      "apiVersion": "2015-03-20",
+      "name": "[concat(parameters('workspaceName'), '/', variables('subscriptionid'))]",
+      "dependsOn": [
+        "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
+      ],
+      "properties": {
+        "category": "1C",
+        "displayName": "session.client",
+        "query": "MyRecordType_CL\n| where StringValue_s == \"sessions.client\" \n| project TimeGenerated, NumberValue_d, StringValue_s ",
+        "version": 2
       }
     }
   ]

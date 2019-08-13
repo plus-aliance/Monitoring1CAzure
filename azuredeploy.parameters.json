@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "workspaceName": {
-      "value": "monitoring1c"
+      "value": "alc-mon1c-test-00"
       }
     }
   }
